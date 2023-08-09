@@ -70,3 +70,5 @@ test-driver
 utils/sip-date
 utils/sip-dig
 utils/sip-options
+libsofia-sip-ua/stun/stunc
+packages/sofia-sip-1.13.14.spec
