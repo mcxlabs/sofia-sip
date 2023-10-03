@@ -299,11 +299,11 @@ static char const bchars[] =
 
 /** Search for a suitable boundary from MIME. */
 static char *
-msg_multipart_search_boundary(su_home_t *home, char const *p, size_t len)
+msg_multipart_search_boundary(su_home_t *home, unsigned char const *p, size_t len)
 {
   size_t m;
   unsigned crlf;
-  char const *end = p + len;
+  char const *end = (char*)p + len;
   char *boundary;
 
   if (len < 2)
@@ -330,8 +330,8 @@ msg_multipart_search_boundary(su_home_t *home, char const *p, size_t len)
   }
 
   /* Look for LF -- */
-  for (;(p = memmem(p, end - p, LF "--", 3)); p += 3) {
-    len = end - p;
+  for (;(p = memmem(p, end - (char*)p, LF "--", 3)); p += 3) {
+    len = end - (char*)p;
     m = 3 + su_memspn(p + 3, len - 3, bchars, bchars_len);
     if (m + 2 >= len)
       return NULL;
@@ -377,8 +377,8 @@ msg_multipart_t *msg_multipart_parse(su_home_t *home,
   /* Dummy msg object */
   msg_t msg[1] = {{{ SU_HOME_INIT(msg) }}};
   size_t len, m, blen;
-  char *boundary, *p, *next, save;
-  char *b, *end;
+  char *boundary, save;
+  unsigned char *p, *b, *next, *end;
   msg_param_t param;
 
   if (!pl) return NULL;

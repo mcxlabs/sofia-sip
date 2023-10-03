@@ -98,13 +98,13 @@ SOFIA_BEGIN_DECLS
 #define msg_kind_list_critical   msg_kind_list, 1
 
 SOFIAPUBFUN issize_t msg_extract_header(msg_t *msg, msg_pub_t *mo,
-				   char b[], isize_t bsiz, int eos);
+				   unsigned char b[], isize_t bsiz, int eos);
 SOFIAPUBFUN issize_t msg_extract_separator(msg_t *msg, msg_pub_t *mo,
-					   char b[], isize_t bsiz, int eos);
+					   unsigned char b[], isize_t bsiz, int eos);
 SOFIAPUBFUN issize_t msg_extract_payload(msg_t *msg, msg_pub_t *mo,
 					 msg_header_t **return_payload,
 					 usize_t body_len,
-					 char b[], isize_t bsiz, int eos);
+					 unsigned char b[], isize_t bsiz, int eos);
 
 /* ---------------------------------------------------------------------------
  * 2) Header processing methods for common headers.

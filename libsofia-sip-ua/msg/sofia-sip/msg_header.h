@@ -191,7 +191,7 @@ SOFIAPUBFUN msg_separator_t *msg_separator_create(su_home_t *home)
   ((char *)pl->pl_common->h_data + (pl)->pl_common->h_len)
 /** Get size of available buffer space */
 #define MSG_CHUNK_AVAIL(pl) \
-  ((pl)->pl_len + ((pl)->pl_data - (char *)pl->pl_common->h_data) - \
+  ((pl)->pl_len + ((char *)(pl)->pl_data - (char *)pl->pl_common->h_data) - \
    (pl)->pl_common->h_len)
 /** Get next chunk in list */
 #define MSG_CHUNK_NEXT(pl) \

@@ -342,7 +342,7 @@ issize_t msg_recv_iovec(msg_t *msg, msg_iovec_t vec[], isize_t veclen,
   size_t i = 0;
   size_t len = 0;
   msg_payload_t *chunk;
-  char *buf;
+  unsigned char *buf;
 
   if (n == 0)
     return 0;
@@ -1002,7 +1002,7 @@ extract_next(msg_t *msg, msg_pub_t *mo, char *b, isize_t bsiz,
 
 /** Extract a header. */
 issize_t msg_extract_header(msg_t *msg, msg_pub_t *mo,
-			    char b[], isize_t bsiz, int eos)
+			    unsigned char b[], isize_t bsiz, int eos)
 {
   return extract_header(msg, mo, b, bsiz, eos, 0);
 }
@@ -1282,7 +1282,7 @@ msg_header_t *msg_header_d(su_home_t *home, msg_t const *msg, char const *b)
 
 /** Extract a separator line */
 issize_t msg_extract_separator(msg_t *msg, msg_pub_t *mo,
-			       char b[], isize_t bsiz, int eos)
+			       unsigned char b[], isize_t bsiz, int eos)
 {
   msg_mclass_t const *mc = msg->m_class;
   msg_href_t const *hr = mc->mc_separator;
@@ -1313,7 +1313,7 @@ su_inline msg_header_t **msg_chain_tail(msg_t const *msg);
 issize_t msg_extract_payload(msg_t *msg, msg_pub_t *mo,
 			     msg_header_t **return_payload,
 			     usize_t body_len,
-			     char b[], isize_t bsiz,
+			     unsigned char b[], isize_t bsiz,
 			     int eos)
 {
   msg_mclass_t const *mc;

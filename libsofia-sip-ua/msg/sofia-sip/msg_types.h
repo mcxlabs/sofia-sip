@@ -214,7 +214,7 @@ struct msg_separator_s {
 struct msg_payload_s {
   msg_common_t    pl_common[1];	    /**< Common fragment info */
   msg_payload_t  *pl_next;	    /**< Next payload chunk */
-  char           *pl_data;	    /**< Data - may contain NUL */
+  unsigned char  *pl_data;	    /**< Data - may contain NUL */
   usize_t         pl_len;	    /**< Length of message payload */
 };
 
